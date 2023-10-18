@@ -1,5 +1,6 @@
 package com.example.javaendassignment.Database;
 import com.example.javaendassignment.Models.*;
+import com.example.javaendassignment.Models.Exceptions.ResultNotFoundException;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,8 @@ public class Database {
     users = new ArrayList<>();
     //costumers = new ArrayList<>();
 
-    users.add(new User("Dawood", "Ikram", "Ikram123", Role.Sales));
-    users.add(new User("Parranasian", "Parrapeero", "Parrapeero123", Role.Manager));
+    users.add(new User("Dawood", "Ikram", "Ikram&123", Role.Sales));
+    users.add(new User("Parranasian", "Parrapeero", "Parrapeero&123", Role.Manager));
   }
   public void addProductsToList(){
     Product fenderGuitar = new Product("Fender Stratocaster electric guitar",Category.Guitar,
@@ -41,5 +42,20 @@ public class Database {
     products.add(yamahaPiano);
     products.add(drum);
   }
-
+  public Role getUserRole(String username){
+    for (User user: users){
+      if(user.getUserName().equals(username)){
+       return user.getRole();
+      }
+    }
+    return null;
+  }
+  public User loginWithCredentials(String username, String password){
+    for (User user: users){
+      if (user.getUserName().equals(username)&& user.getPassword().equals(password)){
+        return user;
+      }
+    }
+    throw new ResultNotFoundException("Invalid Username and Password combination");
+  }
 }
