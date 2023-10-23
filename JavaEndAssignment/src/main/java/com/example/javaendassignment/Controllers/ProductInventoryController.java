@@ -20,5 +20,7 @@ public class ProductInventoryController {
   @FXML
   private Button btnEditProduct;
 
+  public void initialize() {
 
+  }
 }

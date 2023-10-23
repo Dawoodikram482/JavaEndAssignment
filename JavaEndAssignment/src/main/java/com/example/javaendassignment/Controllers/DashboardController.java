@@ -1,38 +1,43 @@
 package com.example.javaendassignment.Controllers;
 import com.example.javaendassignment.Database.Database;
-import com.example.javaendassignment.Models.Role;
-import javafx.event.ActionEvent;
+import com.example.javaendassignment.Models.User;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+
 import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public class DashboardController {
+
   @FXML
   private Label welcomeLabel;
   @FXML
   private Label roleLabel;
   @FXML
   private Label dateTimeLabel;
-
-  public void start(String username, Role userRole){
-    welcomeLabel.setText("Welcome "+ username + "!");
-    roleLabel.setText("Your role is "+ userRole + ".");
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-    Date now = new Date();
-    dateTimeLabel.setText(dateFormat.format(now));
+  public User user;
+  public Database database;
+  public void databaseInstance(Database database){
+    this.database = database;
   }
 
-  public void onCreateOrderBtnClicked() {
+  public void userInstance(User user){
+    this.user = user;
   }
 
-  public void onProductInventoryBtnClicked() {
+  public void start(){
+
+    getUpdatedDateTime();
+  }
+  public void getUpdatedDateTime() {
+    try {
+      LocalDateTime now = LocalDateTime.now();
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+      String formattedDateTime = now.format(formatter);
+      dateTimeLabel.setText("It is now: " + formattedDateTime);
+    } catch (Exception e) {
+      dateTimeLabel.setText("Error displaying the date and time.");
+    }
   }
 
-  public void onOrderHistoryBtnClicked() {
-  }
 }

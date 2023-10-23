@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="MainViewAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="1093.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaendassignment.Controllers.MainWindowController">
+<children>
+    <VBox prefHeight="662.0" prefWidth="195.0" style="-fx-background-color: #ff0000;">
+        <children>
+            <Pane prefHeight="119.0" prefWidth="218.0">
+                <children>
+                    <Label layoutX="26.0" layoutY="26.0" prefHeight="67.0" prefWidth="166.0" text="Parranasian's Music Shop" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <font>
+                            <Font name="Comic Sans MS Bold" size="23.0" />
+                        </font>
+                    </Label>
+                </children>
+            </Pane>
+            <Button fx:id="dashboardButton" mnemonicParsing="false" onAction="#onDashboardBtnClicked" prefHeight="57.0" prefWidth="225.0" style="-fx-background-color: F36F6F;" text="Dashboard">
+                <font>
+                    <Font name="Calibri" size="17.0" />
+                </font></Button>
+            <Button fx:id="createOrderButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCreateOrderBtnClicked" prefHeight="57.0" prefWidth="225.0" style="-fx-background-color: F36F6F;" text="Create Order">
+                <font>
+                    <Font name="Calibri" size="17.0" />
+                </font>
+            </Button>
+            <Button fx:id="productInventoryButton" layoutX="10.0" layoutY="67.0" mnemonicParsing="false" onAction="#onProductInventoryBtnClicked" prefHeight="57.0" prefWidth="225.0" style="-fx-background-color: F36F6F;" text="Product Inventory">
+                <font>
+                    <Font name="Calibri" size="17.0" />
+                </font>
+            </Button>
+            <Button fx:id="orderHistoryButton" layoutX="10.0" layoutY="124.0" mnemonicParsing="false" onAction="#onOrderHistoryBtnClicked" prefHeight="57.0" prefWidth="225.0" style="-fx-background-color: F36F6F;" text="Order History">
+                <font>
+                    <Font name="Calibri" size="17.0" />
+                </font>
+            </Button>
+        </children>
+    </VBox>
+    <Label fx:id="welcomeLabel" layoutX="265.0" layoutY="47.0" prefHeight="57.0" prefWidth="224.0" wrapText="true">
+        <font>
+            <Font name="Calibri Bold Italic" size="26.0" />
+        </font>
+    </Label>
+    <Label fx:id="roleLabel" layoutX="265.0" layoutY="117.0" prefHeight="18.0" prefWidth="224.0">
+        <font>
+            <Font name="Calibri" size="16.0" />
+        </font>
+    </Label>
+    <VBox fx:id="voidVbox" layoutX="195.0" layoutY="8.0" prefHeight="646.0" prefWidth="892.0" />
+</children>
+</AnchorPane>

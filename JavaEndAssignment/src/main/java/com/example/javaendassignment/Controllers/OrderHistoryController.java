@@ -14,4 +14,7 @@ public class OrderHistoryController {
   private TableView orderHistoryTableView;
   @FXML
   private TableView orderedProductsTableView;
+  public void initialize() {
+
+  }
 }

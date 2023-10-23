@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="662.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaendassignment.Controllers.DashboardController">
+    <children>
+        <Label fx:id="welcomeLabel" layoutX="118.0" layoutY="39.0" prefHeight="57.0" prefWidth="224.0" wrapText="true">
+            <font>
+                <Font name="Calibri Bold Italic" size="26.0" />
+            </font>
+        </Label>
+        <Label fx:id="roleLabel" layoutX="118.0" layoutY="104.0" prefHeight="18.0" prefWidth="224.0">
+            <font>
+                <Font name="Calibri" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="dateTimeLabel" layoutX="118.0" layoutY="146.0" prefHeight="17.0" prefWidth="224.0">
+            <font>
+                <Font name="Calibri" size="14.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

@@ -4,41 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="1093.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaendassignment.Controllers.OrderController">
-    <VBox prefHeight="662.0" prefWidth="195.0" style="-fx-background-color: #ff0000;">
-        <children>
-            <Pane prefHeight="119.0" prefWidth="218.0">
-                <children>
-                    <Label layoutX="26.0" layoutY="26.0" prefHeight="67.0" prefWidth="166.0" text="Parranasian's Music Shop" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                        <font>
-                            <Font name="Comic Sans MS Bold" size="23.0" />
-                        </font>
-                    </Label>
-                </children>
-            </Pane>
-            <Button fx:id="dashboardButton" mnemonicParsing="false" prefHeight="57.0" prefWidth="225.0" style="-fx-background-color: F36F6F;" text="Dashboard">
-                <font>
-                    <Font name="Calibri" size="17.0" />
-                </font>
-            </Button>
-            <Button fx:id="createOrderButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="225.0" style="-fx-background-color: F36F6F;" text="Create Order">
-                <font>
-                    <Font name="Calibri" size="17.0" />
-                </font>
-            </Button>
-            <Button fx:id="productInventoryButton" layoutX="10.0" layoutY="67.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="225.0" style="-fx-background-color: F36F6F;" text="Product Inventory">
-                <font>
-                    <Font name="Calibri" size="17.0" />
-                </font>
-            </Button>
-            <Button fx:id="orderHistoryButton" layoutX="10.0" layoutY="124.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="225.0" style="-fx-background-color: F36F6F;" text="Order History">
-                <font>
-                    <Font name="Calibri" size="17.0" />
-                </font>
-            </Button>
-        </children>
-    </VBox>
-    <TableView fx:id="TableOrderProducts" layoutX="81.0" layoutY="851.0" maxHeight="500.0" maxWidth="740.0" minWidth="740.0" prefHeight="358.0" prefWidth="740.0" translateX="170.0" translateY="-605.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaendassignment.Controllers.OrderController">
+    <TableView fx:id="TableOrderProducts" layoutX="-137.0" layoutY="845.0" maxHeight="500.0" maxWidth="740.0" minWidth="740.0" prefHeight="358.0" prefWidth="740.0" translateX="170.0" translateY="-605.0">
         <columns>
             <TableColumn prefWidth="61.333343505859375" text="Quantity" />
             <TableColumn prefWidth="342.99998474121094" text="Name" />
@@ -47,43 +14,43 @@
             <TableColumn prefWidth="180.0" text="Description" />
         </columns>
     </TableView>
-   <Button fx:id="btnAddProduct" layoutX="251.0" layoutY="617.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" text="Add Product">
+   <Button fx:id="btnAddProduct" layoutX="33.0" layoutY="611.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" text="Add Product">
       <font>
          <Font name="Calibri" size="13.0" />
       </font></Button>
-   <Button fx:id="btnDeleteProduct" layoutX="401.0" layoutY="617.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Delete Product">
+   <Button fx:id="btnDeleteProduct" layoutX="183.0" layoutY="611.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Delete Product">
       <font>
          <Font name="Calibri" size="13.0" />
       </font></Button>
-   <Button fx:id="btnCreateOrder" layoutX="547.0" layoutY="617.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Create Order">
+   <Button fx:id="btnCreateOrder" layoutX="329.0" layoutY="611.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Create Order">
       <font>
          <Font name="Calibri" size="13.0" />
       </font></Button>
-   <TextField fx:id="txtPhoneNumber" layoutX="420.0" layoutY="166.0" promptText="Phone Number" />
-   <TextField fx:id="txtFirstName" layoutX="420.0" layoutY="36.0" promptText="First Name" />
-   <TextField fx:id="txtLastName" layoutX="420.0" layoutY="78.0" promptText="Last Name" />
-   <TextField fx:id="txtEmailAddress" layoutX="420.0" layoutY="122.0" promptText="E-mail Address" />
-   <Label layoutX="266.0" layoutY="78.0" prefHeight="25.0" prefWidth="99.0" text="Last Name ">
+   <TextField fx:id="txtPhoneNumber" layoutX="202.0" layoutY="160.0" promptText="Phone Number" />
+   <TextField fx:id="txtFirstName" layoutX="202.0" layoutY="30.0" promptText="First Name" />
+   <TextField fx:id="txtLastName" layoutX="202.0" layoutY="72.0" promptText="Last Name" />
+   <TextField fx:id="txtEmailAddress" layoutX="202.0" layoutY="116.0" promptText="E-mail Address" />
+   <Label layoutX="48.0" layoutY="72.0" prefHeight="25.0" prefWidth="99.0" text="Last Name ">
       <font>
          <Font name="Calibri" size="15.0" />
       </font>
    </Label>
-   <Label layoutX="266.0" layoutY="32.0" prefHeight="25.0" prefWidth="99.0" text="First Name">
+   <Label layoutX="48.0" layoutY="26.0" prefHeight="25.0" prefWidth="99.0" text="First Name">
       <font>
          <Font name="Calibri" size="15.0" />
       </font>
    </Label>
-   <Label layoutX="266.0" layoutY="122.0" prefHeight="25.0" prefWidth="99.0" text="E-mail Address">
+   <Label layoutX="48.0" layoutY="116.0" prefHeight="25.0" prefWidth="99.0" text="E-mail Address">
       <font>
          <Font name="Calibri" size="15.0" />
       </font>
    </Label>
-   <Label layoutX="266.0" layoutY="162.0" prefHeight="25.0" prefWidth="99.0" text="Phone Number ">
+   <Label layoutX="48.0" layoutY="156.0" prefHeight="25.0" prefWidth="99.0" text="Phone Number ">
       <font>
          <Font name="Calibri" size="15.0" />
       </font>
    </Label>
-   <Label layoutX="251.0" layoutY="205.0" prefHeight="33.0" prefWidth="111.0" text="Products">
+   <Label layoutX="33.0" layoutY="199.0" prefHeight="33.0" prefWidth="111.0" text="Products">
       <font>
          <Font name="Calibri Bold" size="26.0" />
       </font>

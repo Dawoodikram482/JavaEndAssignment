@@ -60,21 +60,21 @@ public class LoginController {
        try {
            User user = database.loginWithCredentials(username, password);
            Role userRole = database.getUserRole(username);
-           openDashboardWindow(username,userRole);
+           openMainWindow(username,userRole);
 
        }catch (ResultNotFoundException ex){
            lblErrorMessage.setText(ex.getMessage());
        }
     }
-    private void openDashboardWindow(String  username, Role userRole) throws IOException {
+    private void openMainWindow(String  username, Role userRole) throws IOException {
         try {
-            FXMLLoader dashboardLoader = new FXMLLoader(MusicApplication.class.getResource("Dashboard.fxml"));
+            FXMLLoader dashboardLoader = new FXMLLoader(MusicApplication.class.getResource("MainWindow.fxml"));
             Parent root = dashboardLoader.load();
-            DashboardController controller = dashboardLoader.getController();
+            MainWindowController controller = dashboardLoader.getController();
             controller.start(username, userRole);
             Scene scene = new Scene(root, 643, 1093);
             Stage stage = (Stage) btnLogin.getScene().getWindow();
-            stage.setTitle("Dashboard");
+            stage.setTitle("Main Window");
             stage.setScene(scene);
         }catch (IOException e){
             e.printStackTrace();
