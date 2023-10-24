@@ -1,0 +1,13 @@
+
+s
+java:S1104"QMake users a static final constant or non-public and provide accessors if needed.(÷ÖåÅşÿÿÿÿ8ĞÕƒùµ1
+v
+java:S1104"TMake products a static final constant or non-public and provide accessors if needed.(Ê¯î‡şÿÿÿÿ8¹Éõöµ1
+t
+java:S1104"RMake orders a static final constant or non-public and provide accessors if needed.(Û‹°íşÿÿÿÿ8¹Éõöµ1
+D
+java:S1948""Make "users" private or transient.(÷ÖåÅşÿÿÿÿ8ÕÕƒùµ1
+G
+java:S1948"%Make "products" private or transient.(Ê¯î‡şÿÿÿÿ8»Éõöµ1
+E
+java:S1948"#Make "orders" private or transient.(Û‹°íşÿÿÿÿ8»Éõöµ1

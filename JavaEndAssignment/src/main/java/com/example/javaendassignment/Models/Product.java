@@ -5,18 +5,25 @@ package com.example.javaendassignment.Models;
 
   public class Product implements Serializable{
     private String name;
-    private Category category;
+    private String category;
     private String description;
+    private int quantity;
     private double price;
     private int stock;
-    public Product(String name, Category category, String description, double price, int stock){
+    private double totalPrice;
+    public Product(int stock, String name, String  category, double price, String description){
       this.name = name;
       this.category = category;
       this.description = description;
       this.price = price;
       this.stock = stock;
     }
-
+    public Product(int quantity, String name, String category,double totalPrice ){
+      this.quantity = quantity;
+      this.name = name;
+      this.category =category;
+      this.totalPrice = totalPrice;
+    }
     public String getName() {
       return name;
     }
@@ -25,11 +32,11 @@ package com.example.javaendassignment.Models;
       this.name = name;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
       return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String  category) {
       this.category = category;
     }
 
@@ -55,5 +62,24 @@ package com.example.javaendassignment.Models;
 
     public void setStock(int stock) {
       this.stock = stock;
+    }
+    public double getTotalPrice() {
+      return totalPrice*quantity;
+    }
+    public void setTotalPrice(double totalPrice) {
+      this.totalPrice = totalPrice;
+    }
+
+    public int getQuantity() {
+      return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+      this.quantity = quantity;
+    }
+    public void decreaseStock(int quantity){
+      if (stock> quantity){
+        stock -= quantity;
+      }
     }
   }

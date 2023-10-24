@@ -1,7 +1,11 @@
 
-X	java:S125"<This block of commented-out lines of code should be removed.(öÇ²8ÓÓö•´1
-W	java:S125"<This block of commented-out lines of code should be removed.(¼ƒô`8ÕÓö•´1
-@
-java:S1128"$Remove this unused import 'java.io'.(¬›ãD8¤€û•´1
-L
-java:S1068"*Remove this unused "orders" private field.(à£½ùøÿÿÿÿ8ØÓö•´1
+g	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8˜™ûøµ1
+g	java:S112:"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8˜™ûøµ1
+g	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8š™ûøµ1
+l
+java:S2095."OUse try-with-resources or close this "ObjectInputStream" in a "finally" clause.(ËÚ’›8¶™ûøµ1
+r
+java:S2095A"PUse try-with-resources or close this "ObjectOutputStream" in a "finally" clause.(¼ú«úÿÿÿÿ8¶™ûøµ1
+W	java:S125"<This block of commented-out lines of code should be removed.(¼ƒô`8»™ûøµ1
+a
+java:S21479"DCombine this catch with the one at line 55, which has the same body.(ıàÑÎ8Ã™ûøµ1

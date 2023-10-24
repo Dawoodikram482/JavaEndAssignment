@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -30,6 +29,8 @@ public class MainWindowController {
   private VBox voidVbox;
   private Database database;
   private User user;
+  public void setDatabase(Database database){this.database = database;}
+  public void userInstanse(User user){this.user = user;}
   public void start(String username, Role userRole){
     welcomeLabel.setText("Welcome "+ username+ "!");
     roleLabel.setText("Your role is "+ userRole+ ".");
@@ -39,7 +40,7 @@ public class MainWindowController {
     roleLabel.setText("");
   }
   public void onDashboardBtnClicked() throws IOException{
-
+    clearLabels();
     switchToDashboardView();
   }
   public void onCreateOrderBtnClicked() throws IOException {
@@ -59,8 +60,8 @@ public class MainWindowController {
     try {
       FXMLLoader fxmlLoader = new FXMLLoader(MusicApplication.class.getResource("CreateOrder.fxml"));
       Parent root = fxmlLoader.load();
-      OrderController controller = fxmlLoader.getController();
-      controller.initialize();
+      OrderController orderController = fxmlLoader.getController();
+      orderController.initialize();
       voidVbox.getChildren().setAll(root);
     }catch (IOException ex){
       ex.printStackTrace();
@@ -70,8 +71,9 @@ public class MainWindowController {
     try {
       FXMLLoader productFxmlLoader = new FXMLLoader(MusicApplication.class.getResource("ProductInventory.fxml"));
       Parent root = productFxmlLoader.load();
-      ProductInventoryController controller = productFxmlLoader.getController();
-      controller.initialize();
+      ProductInventoryController productInventoryController = productFxmlLoader.getController();
+      productInventoryController.setDatabase(database);
+      productInventoryController.displayProducts();
       voidVbox.getChildren().setAll(root);
     }catch (IOException ex){
       ex.printStackTrace();
@@ -95,7 +97,7 @@ public class MainWindowController {
       Parent root = dashboardLoader.load();
       DashboardController dashboardController = dashboardLoader.getController();
       dashboardController.userInstance(user);
-      dashboardController.databaseInstance(database);
+      dashboardController.setDatabase(database);
       dashboardController.start();
       voidVbox.getChildren().setAll(root);
     } catch (IOException ex) {

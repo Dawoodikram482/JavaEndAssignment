@@ -9,7 +9,7 @@ public class Database {
   private final List<User> users;
   private List<Product> products;
   private List<Order> orders;
-  // private List<Costumer> costumers;
+  private SerializedDataSender dataSender;
 
   public Database() {
     products = new ArrayList<>();
@@ -17,30 +17,10 @@ public class Database {
     users = new ArrayList<>();
     //costumers = new ArrayList<>();
 
-    users.add(new User("Dawood", "Ikram", "Ikram&123", Role.Sales));
-    users.add(new User("Parranasian", "Parrapeero", "Parrapeero&123", Role.Manager));
-  }
-  public void addProductsToList(){
-    Product fenderGuitar = new Product("Fender Stratocaster electric guitar",Category.Guitar,
-        "One of the most iconic and recognizable electric guitars in the world," +
-            " known for its sleek design and versatile sound.",1999.99,3);
-    Product gibsonGuitar = new Product("The Gibson Les Paul electric guitar", Category.Guitar,
-        "Celebrated for its rich, warm tones and solid body design.  " +
-            "Gibson Les Paul Standard is highly regarded.",2199.49,2);
-    Product steinwayPiano = new Product("Steinway & Sons: Model D", Category.Piano,
-        "One of the most prestigious grand pianos in the world, known for its exceptional " +
-            "craftsmanship and superior sound quality.",2499.99,2);
-    Product yamahaPiano = new Product("Yamaha CFX", Category.Piano,
-        "A celebrated concert grand piano that has gained recognition for its clear and powerful sound.",
-        2999.99,4);
-    Product drum = new Product("Ludwig Classic Maple",Category.Drum,
-        "Highly regarded for its warm and versatile sound, making it a favorite among drummers",
-        2999.99,1);
-    products.add(fenderGuitar);
-    products.add(gibsonGuitar);
-    products.add(steinwayPiano);
-    products.add(yamahaPiano);
-    products.add(drum);
+    users.add(new User("Dawood",  "Ikram&123", Role.Sales));
+    users.add(new User("Parranasian",  "Parrapeero&123", Role.Manager));
+
+    loadDataFromDataFile();
   }
   public Role getUserRole(String username){
     for (User user: users){
@@ -50,6 +30,7 @@ public class Database {
     }
     return null;
   }
+
   public User loginWithCredentials(String username, String password){
     for (User user: users){
       if (user.getUserName().equals(username)&& user.getPassword().equals(password)){
@@ -57,5 +38,47 @@ public class Database {
       }
     }
     throw new ResultNotFoundException("Invalid Username and Password combination");
+  }
+  public void loadDataFromDataFile(){
+    File file = new File("DataFile.dat");
+    if(!file.exists()){
+      sendDataToFile();
+    }
+    try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file));){
+
+      dataSender = (SerializedDataSender) inputStream.readObject();
+      users.clear();
+      products.clear();
+      orders.clear();
+
+      products.addAll(dataSender.products);
+      users.addAll(dataSender.users);
+      orders.addAll(dataSender.orders);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    }
+  }
+  public void sendDataToFile() {
+    dataSender = new SerializedDataSender(users, products, orders);
+    File file = new File("DataFile.dat");
+    try(ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(file));) {
+      outputStream.writeObject(dataSender);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public List<Product> obtainProducts(){
+    return products;
+  }
+  public void addProductsToDatabase(Product product){
+    products.add(product);
+    sendDataToFile();
+  }
+  public void deleteProductsFromDatabase(Product product){
+    products.remove(product);
+    sendDataToFile();
   }
 }

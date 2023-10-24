@@ -17,7 +17,7 @@ public class DashboardController {
   private Label dateTimeLabel;
   public User user;
   public Database database;
-  public void databaseInstance(Database database){
+  public void setDatabase(Database database){
     this.database = database;
   }
 
@@ -26,7 +26,8 @@ public class DashboardController {
   }
 
   public void start(){
-
+    welcomeLabel.setText("Welcome "+ user.getUserName()+ "!");
+    roleLabel.setText("Your role is "+ user.getRole()+ ".");
     getUpdatedDateTime();
   }
   public void getUpdatedDateTime() {

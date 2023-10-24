@@ -28,6 +28,7 @@ public class LoginController {
     private Label lblErrorMessage;
     @FXML
     private Button btnLogin;
+    private User user;
     public void start(Database database){
         this.database = database;
         btnLogin.setDisable(true);
@@ -36,6 +37,7 @@ public class LoginController {
             btnLogin.setDisable(!isValidPassword);
         });
     }
+
     protected boolean checkPasswordValidity(String password) {
         boolean hasLetters = false;
         boolean hasDigits = false;
@@ -58,7 +60,7 @@ public class LoginController {
         String password = pswdFieldPassword.getText();
 
        try {
-           User user = database.loginWithCredentials(username, password);
+           user = database.loginWithCredentials(username, password);
            Role userRole = database.getUserRole(username);
            openMainWindow(username,userRole);
 
@@ -68,13 +70,15 @@ public class LoginController {
     }
     private void openMainWindow(String  username, Role userRole) throws IOException {
         try {
-            FXMLLoader dashboardLoader = new FXMLLoader(MusicApplication.class.getResource("MainWindow.fxml"));
-            Parent root = dashboardLoader.load();
-            MainWindowController controller = dashboardLoader.getController();
+            FXMLLoader mainwindowLoader = new FXMLLoader(MusicApplication.class.getResource("MainWindow.fxml"));
+            Parent root = mainwindowLoader.load();
+            MainWindowController controller = mainwindowLoader.getController();
+            controller.userInstanse(user);
+            controller.setDatabase(database);
             controller.start(username, userRole);
-            Scene scene = new Scene(root, 643, 1093);
+            Scene scene = new Scene(root, 1093, 643);
             Stage stage = (Stage) btnLogin.getScene().getWindow();
-            stage.setTitle("Main Window");
+            stage.setTitle("Parranasian's Music Shop");
             stage.setScene(scene);
         }catch (IOException e){
             e.printStackTrace();

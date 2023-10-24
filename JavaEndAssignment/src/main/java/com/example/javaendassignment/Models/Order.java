@@ -1,28 +1,32 @@
 package com.example.javaendassignment.Models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Order implements Serializable {
-  private Customer customer;
-  private List<OrderItem> orderItemList;
+  private User user;
+  private ArrayList<Product> products;
   private Date orderDate;
-  public Order(Customer customer, List<OrderItem> orderItemList, Date orderDate){
-    this.customer = customer;
-    this.orderItemList = orderItemList;
+  public Order(User user, Date orderDate, ArrayList <Product> products){
+    this.user = user;
+    this.products = products;
     this.orderDate= orderDate;
   }
 
   public Date getOrderDate() {
     return orderDate;
   }
-
-  public List<OrderItem> getOrderItemList() {
-    return orderItemList;
+  public User getUser() {
+    return user;
   }
 
-  public Customer getCustomer() {
-    return customer;
+  public ArrayList<Product> getProducts() {
+    return products;
+  }
+
+  public void setProducts(ArrayList<Product> products) {
+    this.products = products;
   }
 }

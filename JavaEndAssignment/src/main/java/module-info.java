@@ -7,4 +7,5 @@ module com.example.javaendassignment {
     exports com.example.javaendassignment;
   exports com.example.javaendassignment.Controllers;
   opens com.example.javaendassignment.Controllers to javafx.fxml;
+  opens com.example.javaendassignment.Models to javafx.base;
 }

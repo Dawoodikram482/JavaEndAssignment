@@ -13,8 +13,6 @@ l
 <src/main/java/com/example/javaendassignment/Models/User.java,9\7\97d5f078d59aeefde77a598be75b4a6c9d2f339e
 l
 <src/main/java/com/example/javaendassignment/Models/Role.java,c\b\cb859233fc7cffb46350baa50c1ce153ecdc7cfe
-n
->src/main/java/com/example/javaendassignment/Models/Person.java,1\b\1bb2da13ad70d31aae29bea02a67207d8a1a2c7e
 |
 Lsrc/main/java/com/example/javaendassignment/Controllers/OrderController.java,1\b\1baf2976786ac4242ab286b1b8e0bd2eb6fe2b0c
 Ö
@@ -25,3 +23,11 @@ Psrc/main/java/com/example/javaendassignment/Controllers/DashboardController.jav
 Wsrc/main/java/com/example/javaendassignment/Controllers/ProductInventoryController.java,2\4\247ed26b06f2ee7eb594b51ca14d6d0593abb6b4
 É
 Ssrc/main/java/com/example/javaendassignment/Controllers/OrderHistoryController.java,b\c\bca47f4f3545b0d8bf57805c6b01fa980b1c5d26
+o
+?src/main/java/com/example/javaendassignment/Models/Product.java,f\6\f6255e644e9cf0fa2a7c00fd8c9edbaceaa8f84e
+Å
+Qsrc/main/java/com/example/javaendassignment/Controllers/MainWindowController.java,8\c\8c26dc43fbeecae141021f6a23cc7379b3e8ca11
+m
+=src/main/java/com/example/javaendassignment/Models/Order.java,5\7\5734a384e12aab61938d126f01831258ae653bee
+~
+Nsrc/main/java/com/example/javaendassignment/Database/SerializedDataSender.java,8\d\8d5ed4dbd25f206b92d2ac9c1c923cde969f8f77
