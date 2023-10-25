@@ -39,7 +39,7 @@
       <font>
          <Font name="Calibri" size="13.0" />
       </font></Button>
-   <Button fx:id="btnCreateOrder" layoutX="329.0" layoutY="611.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Create Order">
+   <Button fx:id="btnCreateOrder" layoutX="329.0" layoutY="611.0" mnemonicParsing="false" onAction="#onCreateBtnClicked" prefHeight="25.0" prefWidth="111.0" text="Create Order">
       <font>
          <Font name="Calibri" size="13.0" />
       </font></Button>
@@ -72,5 +72,5 @@
          <Font name="Calibri Bold" size="26.0" />
       </font>
    </Label>
-   <Label fx:id="messageLabel" layoutX="540.0" layoutY="616.0" prefHeight="17.0" prefWidth="233.0" />
+   <Label fx:id="messageLabel" layoutX="540.0" layoutY="603.0" prefHeight="17.0" prefWidth="233.0" textFill="RED" />
 </AnchorPane>

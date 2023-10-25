@@ -8,14 +8,14 @@ import java.util.List;
 public class Order implements Serializable {
   private User user;
   private ArrayList<Product> products;
-  private Date orderDate;
-  public Order(User user, Date orderDate, ArrayList <Product> products){
+  private String orderDate;
+  public Order(String orderDate,User user,  ArrayList <Product> products){
     this.user = user;
     this.products = products;
     this.orderDate= orderDate;
   }
 
-  public Date getOrderDate() {
+  public String getOrderDate() {
     return orderDate;
   }
   public User getUser() {

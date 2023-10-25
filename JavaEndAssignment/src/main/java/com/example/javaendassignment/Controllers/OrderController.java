@@ -1,25 +1,30 @@
 package com.example.javaendassignment.Controllers;
+
 import com.example.javaendassignment.Database.Database;
 import com.example.javaendassignment.Models.Order;
 import com.example.javaendassignment.Models.Product;
+import com.example.javaendassignment.Models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderController  {
+public class OrderController {
   @FXML
   private Button btnAddProduct;
   @FXML
   private Label messageLabel;
   @FXML
-  private TableView <Product> TableOrderProducts;
+  private TableView<Product> TableOrderProducts;
   @FXML
   private TextField txtFirstName;
   @FXML
@@ -31,14 +36,18 @@ public class OrderController  {
   private List<Product> selectedProducts = new ArrayList<>();
   private ObservableList<Product> orderedProductsList = FXCollections.observableArrayList();
   private Database database;
-  public void setDatabase(Database database){this.database = database;}
+
+  public void setDatabase(Database database) {
+    this.database = database;
+  }
+
   public void initialize() {
-      TableOrderProducts.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-      TableOrderProducts.setItems(orderedProductsList);
+    TableOrderProducts.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    TableOrderProducts.setItems(orderedProductsList);
   }
 
   public void onAddButtonClicked() {
-    try{
+    try {
       FXMLLoader addOrderDialogLoader = new FXMLLoader(getClass().getResource("/com/example/javaendassignment/AddProductDialog.fxml"));
       Parent root = addOrderDialogLoader.load();
 
@@ -50,19 +59,71 @@ public class OrderController  {
       dialog.setTitle("Add Product To Order");
       dialog.getDialogPane().setContent(root);
       dialog.showAndWait();
-    }catch (IOException ex){
+    } catch (IOException ex) {
       messageLabel.setText("Error Loading Add Product Dialog");
-      ex.printStackTrace();
     }
   }
-  public void getOrderedProduct(Product product){
+
+  public void getOrderedProduct(Product product) {
     orderedProductsList.add(product);
   }
 
   public void onDeletebtnClicked() {
-    Product selectedProduct = TableOrderProducts.getSelectionModel().getSelectedItem();
-    if(selectedProduct!=null){
-      orderedProductsList.remove(selectedProduct);
+    try {
+      Product selectedProduct = TableOrderProducts.getSelectionModel().getSelectedItem();
+      if (selectedProduct != null) {
+        orderedProductsList.remove(selectedProduct);
+      }
+    } catch (Exception e){
+      messageLabel.setText("Error Occurred While Deleting the Product");
     }
   }
-}
+
+  public void onCreateBtnClicked() {
+    String firstName = txtFirstName.getText();
+    String lastName = txtLastName.getText();
+    String emailAddress = txtEmailAddress.getText();
+    int phoneNumber = Integer.parseInt(txtPhoneNumber.getText());
+    try{
+      User customer = new User(firstName,lastName,emailAddress,phoneNumber);
+      LocalDateTime now = LocalDateTime.now();
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
+      String dateTime = now.format(formatter);
+      reduceStock();
+
+      Order order = new Order(dateTime,customer,new ArrayList<>(orderedProductsList));
+      database.addOrderToDatabase(order);
+      clearTextFields();
+      TableOrderProducts.setItems(FXCollections.observableArrayList());
+    }catch (Exception ex){
+      messageLabel.setText("Error Occurred While Creating Order");
+    }
+  }
+  private Product getProductByName (String name){
+    for(Product searchProduct:database.obtainProducts()){
+      if(searchProduct.getName().equals(name)){
+        return searchProduct;
+      }
+    } return null;
+  }
+  private void reduceStock(){
+    for (Product product:orderedProductsList){
+      Product targetProduct = getProductByName(product.getName());
+      if(targetProduct!=null){
+        targetProduct.decreaseStock(product.getQuantity());
+      }
+      else{
+        messageLabel.setText("Product" + product.getName()+ "not found");
+      }
+    }
+  }
+  public void clearTextFields(){
+    try {
+      txtFirstName.clear();
+      txtLastName.clear();
+      txtEmailAddress.clear();
+      txtPhoneNumber.clear();
+    }catch (Exception e){
+      messageLabel.setText("Clearing TextFields Failed");
+    }
+  }}
