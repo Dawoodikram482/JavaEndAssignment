@@ -76,7 +76,7 @@ public class LoginController {
             controller.userInstanse(user);
             controller.setDatabase(database);
             controller.start(username, userRole);
-            Scene scene = new Scene(root, 1093, 643);
+            Scene scene = new Scene(root, 1100, 643);
             Stage stage = (Stage) btnLogin.getScene().getWindow();
             stage.setTitle("Parranasian's Music Shop");
             stage.setScene(scene);

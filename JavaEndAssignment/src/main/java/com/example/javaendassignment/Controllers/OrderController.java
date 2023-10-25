@@ -1,6 +1,9 @@
 package com.example.javaendassignment.Controllers;
 import com.example.javaendassignment.Database.Database;
+import com.example.javaendassignment.Models.Order;
 import com.example.javaendassignment.Models.Product;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,19 +29,22 @@ public class OrderController  {
   @FXML
   private TextField txtPhoneNumber;
   private List<Product> selectedProducts = new ArrayList<>();
+  private ObservableList<Product> orderedProductsList = FXCollections.observableArrayList();
   private Database database;
   public void setDatabase(Database database){this.database = database;}
   public void initialize() {
       TableOrderProducts.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+      TableOrderProducts.setItems(orderedProductsList);
   }
 
   public void onAddButtonClicked() {
     try{
-      FXMLLoader addOrderDialogLoader = new FXMLLoader(getClass().getResource("/com/example/javaendassignment/AddProductPopUp.fxml"));
+      FXMLLoader addOrderDialogLoader = new FXMLLoader(getClass().getResource("/com/example/javaendassignment/AddProductDialog.fxml"));
       Parent root = addOrderDialogLoader.load();
 
-      AddProductPopUpController dialogController = new AddProductPopUpController();
+      AddProductDialogController dialogController = addOrderDialogLoader.getController();
       dialogController.setDatabase(database);
+      dialogController.setOrderController(this);
 
       Dialog<ButtonType> dialog = new Dialog<>();
       dialog.setTitle("Add Product To Order");
@@ -47,6 +53,16 @@ public class OrderController  {
     }catch (IOException ex){
       messageLabel.setText("Error Loading Add Product Dialog");
       ex.printStackTrace();
+    }
+  }
+  public void getOrderedProduct(Product product){
+    orderedProductsList.add(product);
+  }
+
+  public void onDeletebtnClicked() {
+    Product selectedProduct = TableOrderProducts.getSelectionModel().getSelectedItem();
+    if(selectedProduct!=null){
+      orderedProductsList.remove(selectedProduct);
     }
   }
 }
