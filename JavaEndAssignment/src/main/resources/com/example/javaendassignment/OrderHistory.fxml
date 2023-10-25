@@ -1,36 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="orderHistoryAnchor"
-            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="860.0"
-            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.javaendassignment.Controllers.OrderHistoryController">
+<AnchorPane fx:id="orderHistoryAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaendassignment.Controllers.OrderHistoryController">
 
-    <TableView fx:id="orderHistoryTableView" layoutX="-133.0" layoutY="59.0" maxWidth="732.0" minHeight="200.0" prefHeight="211.0" prefWidth="732.0" translateX="170.0" translateY="60.0">
+    <TableView fx:id="orderHistoryTableView" layoutX="-133.0" layoutY="35.0" maxWidth="732.0" minHeight="200.0" prefHeight="211.0" prefWidth="732.0" translateX="170.0" translateY="60.0">
         <columns>
-            <TableColumn prefWidth="188.0" text="Date/time" />
-            <TableColumn prefWidth="377.5" text="Name" />
-            <TableColumn prefWidth="131.0" text="Total Price" />
+            <TableColumn fx:id="dateTimeColumn" prefWidth="188.0" text="Date/time">
+                <cellValueFactory>
+                    <PropertyValueFactory property="orderDate" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="orderNameColumn" prefWidth="377.5" text="Name"/>
+            <TableColumn fx:id="totalPriceColumn" prefWidth="131.0" text="Total Price"/>
         </columns>
     </TableView>
-    <Label layoutX="-133.0" layoutY="241.0" text="Order History" translateX="170.0" translateY="-180.0">
+    <Label layoutX="-133.0" layoutY="217.0" text="Order History" translateX="170.0" translateY="-180.0">
         <font>
             <Font name="Calibri Bold" size="25.0" />
         </font></Label>
-   <Label layoutX="37.0" layoutY="354.0" text="Ordered Products">
+   <Label layoutX="37.0" layoutY="330.0" text="Ordered Products">
       <font>
          <Font name="Calibri Bold" size="25.0" />
       </font>
    </Label>
-   <TableView fx:id="orderedProductsTableView" layoutX="37.0" layoutY="417.0" maxWidth="732.0" minHeight="200.0" prefHeight="211.0" prefWidth="732.0">
+   <TableView fx:id="orderedProductsTableView" layoutX="37.0" layoutY="393.0" maxWidth="732.0" minHeight="200.0" prefHeight="211.0" prefWidth="732.0">
       <columns>
-         <TableColumn prefWidth="93.0" text="Quantity" />
-         <TableColumn prefWidth="367.5" text="Name" />
-         <TableColumn prefWidth="146.0" text="Category" />
-         <TableColumn prefWidth="114.0" text="Price" />
+         <TableColumn fx:id="quantityColumn" prefWidth="93.0" text="Quantity">
+             <cellValueFactory>
+                 <PropertyValueFactory property="quantity" />
+             </cellValueFactory>
+         </TableColumn>
+         <TableColumn fx:id="nameColumn" prefWidth="367.5" text="Name">
+             <cellValueFactory>
+                 <PropertyValueFactory property="name" />
+             </cellValueFactory>
+         </TableColumn>
+         <TableColumn fx:id="categoryColumn" prefWidth="146.0" text="Category">
+             <cellValueFactory>
+                 <PropertyValueFactory property="category" />
+             </cellValueFactory>
+         </TableColumn>
+         <TableColumn fx:id="priceColumn" prefWidth="114.0" text="Price">
+             <cellValueFactory>
+                 <PropertyValueFactory property="totalPrice" />
+             </cellValueFactory>
+         </TableColumn>
       </columns>
    </TableView>
+   <Label fx:id="warningLabel" layoutX="37.0" layoutY="614.0" prefHeight="17.0" prefWidth="242.0" textFill="RED" />
 </AnchorPane>
