@@ -61,7 +61,8 @@ public class MainWindowController {
       FXMLLoader fxmlLoader = new FXMLLoader(MusicApplication.class.getResource("CreateOrder.fxml"));
       Parent root = fxmlLoader.load();
       OrderController orderController = fxmlLoader.getController();
-      orderController.initialize();
+      orderController.setDatabase(database);
+//      orderController.initialize();
       voidVbox.getChildren().setAll(root);
     }catch (IOException ex){
       ex.printStackTrace();

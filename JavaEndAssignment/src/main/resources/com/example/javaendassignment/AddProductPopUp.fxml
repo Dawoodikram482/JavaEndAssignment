@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.javaendassignment.Controllers.AddProductPopUpController"
+            fx:id="selectProductDialog" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="914.0" prefHeight="427.0" prefWidth="914.0" >
+<children>
+    <Label prefHeight="34.0" prefWidth="178.0" text="Select Product" translateX="20.0" translateY="35.0">
+        <font>
+            <Font name="Calibri Bold" size="25.0" />
+        </font>
+    </Label>
+    <TableView fx:id= "ProductsTableView" layoutY="43.0" maxWidth="875.0" minHeight="100.0" minWidth="100.0" prefHeight="246.0" prefWidth="874.0" translateX="20.0" translateY="40.0">
+        <columns>
+            <TableColumn prefWidth="70.33333587646484" text="Stock">
+                <cellValueFactory>
+                    <PropertyValueFactory property="stock" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="316.3333435058594" text="Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="109.00003051757812" text="Category">
+                <cellValueFactory>
+                    <PropertyValueFactory property="category" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="101.0" text="Price">
+                <cellValueFactory>
+                    <PropertyValueFactory property="price" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="271.0" text="Description">
+                <cellValueFactory>
+                    <PropertyValueFactory property="description" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    <Label layoutX="7.0" layoutY="282.0" prefHeight="27.0" prefWidth="70.0" text="Quantity:" translateX="20.0" translateY="60.0">
+        <font>
+            <Font name="Calibri" size="15.0" />
+        </font>
+    </Label>
+    <TextField fx:id="txtQuantity" layoutX="3.0" layoutY="304.0" maxWidth="112.0" minWidth="100.0" prefHeight="25.0" prefWidth="112.0" translateX="130.0" translateY="39.0" />
+    <Button fx:id="addToOrderBtn" layoutX="632.0" layoutY="278.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="95.0" text="Add to order" translateX="20.0" translateY="65.0" />
+    <Button fx:id="cancelOrderBtn" layoutX="669.0" layoutY="303.0" mnemonicParsing="false" onAction="#onCancelButtonClicked" prefHeight="23.0" prefWidth="95.0" text="Cancel" translateX="130.0" translateY="40.0" />
+    <Label fx:id="errorMessageLabel" layoutX="27.0" layoutY="388.0" prefHeight="17.0" prefWidth="218.0" />
+</children>
+</AnchorPane>

@@ -81,4 +81,9 @@ public class Database {
     products.remove(product);
     sendDataToFile();
   }
+  public List<Order> getOrders(){return orders;}
+  public void addOrderToDatabase(Order order){
+    orders.add(order);
+    sendDataToFile();
+  }
 }
