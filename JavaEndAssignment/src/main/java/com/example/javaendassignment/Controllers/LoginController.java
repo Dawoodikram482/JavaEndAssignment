@@ -73,7 +73,7 @@ public class LoginController {
             FXMLLoader mainwindowLoader = new FXMLLoader(MusicApplication.class.getResource("MainWindow.fxml"));
             Parent root = mainwindowLoader.load();
             MainWindowController controller = mainwindowLoader.getController();
-            controller.userInstanse(user);
+            controller.userInstance(user);
             controller.setDatabase(database);
             controller.start(username, userRole);
             Scene scene = new Scene(root, 1100, 643);

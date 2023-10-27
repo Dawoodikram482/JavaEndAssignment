@@ -4,25 +4,14 @@ import com.example.javaendassignment.Database.Database;
 import com.example.javaendassignment.Models.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ProductInventoryController {
   private ObservableList<Product> products;
   @FXML
   private Label MessageLabel;
-  @FXML
-  private TableColumn stockColumn;
-  @FXML
-  private TableColumn nameColumn;
-  @FXML
-  private TableColumn categoryColumn;
-  @FXML
-  private TableColumn priceColumn;
-  @FXML
-  private TableColumn descriptionColumn;
+
   @FXML
   private TextField stockTextField;
   @FXML

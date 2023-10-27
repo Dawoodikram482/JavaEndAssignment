@@ -6,7 +6,6 @@ import com.example.javaendassignment.Models.Product;
 import com.example.javaendassignment.Models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +15,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class OrderController {
   @FXML
@@ -33,7 +32,7 @@ public class OrderController {
   private TextField txtEmailAddress;
   @FXML
   private TextField txtPhoneNumber;
-  private List<Product> selectedProducts = new ArrayList<>();
+
   private ObservableList<Product> orderedProductsList = FXCollections.observableArrayList();
   private Database database;
 
@@ -94,6 +93,7 @@ public class OrderController {
       Order order = new Order(dateTime,customer,new ArrayList<>(orderedProductsList));
       database.addOrderToDatabase(order);
       clearTextFields();
+      messageLabel.setText("Order Successfully Created");
       TableOrderProducts.setItems(FXCollections.observableArrayList());
     }catch (Exception ex){
       messageLabel.setText("Error Occurred While Creating Order");

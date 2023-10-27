@@ -12,8 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class MainWindowController {
 
@@ -38,7 +37,7 @@ public class MainWindowController {
     this.database = database;
   }
 
-  public void userInstanse(User user) {
+  public void userInstance(User user) {
     this.user = user;
     try {
       validateUserRole();
@@ -68,7 +67,6 @@ public class MainWindowController {
         orderHistoryButton.setDisable(false);
       }
     } catch (Exception e) {
-//      message.setText("Error allowing access based on role.");
       e.printStackTrace();
     }
   }

@@ -15,7 +15,6 @@ public class Database {
     products = new ArrayList<>();
     orders = new ArrayList<>();
     users = new ArrayList<>();
-    //costumers = new ArrayList<>();
 
     users.add(new User("Dawood",  "Ikram&123", Role.Sales));
     users.add(new User("Parranasian",  "Parrapeero&123", Role.Manager));

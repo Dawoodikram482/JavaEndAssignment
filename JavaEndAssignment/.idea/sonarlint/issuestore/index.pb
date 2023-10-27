@@ -15,8 +15,6 @@ l
 <src/main/java/com/example/javaendassignment/Models/Role.java,c\b\cb859233fc7cffb46350baa50c1ce153ecdc7cfe
 |
 Lsrc/main/java/com/example/javaendassignment/Controllers/OrderController.java,1\b\1baf2976786ac4242ab286b1b8e0bd2eb6fe2b0c
-…
-Usrc/main/java/com/example/javaendassignment/Controllers/AddOrderDialogController.java,a\e\aeaf8e0b812d617a710fd96e40421f8cb1ccaec4
 €
 Psrc/main/java/com/example/javaendassignment/Controllers/DashboardController.java,8\2\821694debf6305a5b4e135c0c490be57df2d305e
 ‡
@@ -31,3 +29,9 @@ m
 =src/main/java/com/example/javaendassignment/Models/Order.java,5\7\5734a384e12aab61938d126f01831258ae653bee
 ~
 Nsrc/main/java/com/example/javaendassignment/Database/SerializedDataSender.java,8\d\8d5ed4dbd25f206b92d2ac9c1c923cde969f8f77
+N
+src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
+<
+DataFile.dat,a\f\afc3093e9c26d18f10e85e5b5753967a2214b982
+‡
+Wsrc/main/java/com/example/javaendassignment/Controllers/AddProductDialogController.java,a\3\a37b6b5c37bf4273feb010bbbca3fee6248d687b

@@ -1,9 +1,11 @@
 
-Š
-java:S1319"hThe type of "products" should be an interface such as "List" rather than the implementation "ArrayList".(şßæïıÿÿÿÿ8ù®òµ1
+…
+java:S1319"hThe type of "products" should be an interface such as "List" rather than the implementation "ArrayList".(äİÜ8ù®òµ1
 ’
 java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(®ÚŒÁùÿÿÿÿ8ø®òµ1
 Š
 java:S1319"hThe type of "products" should be an interface such as "List" rather than the implementation "ArrayList".(ÏÀÎÚşÿÿÿÿ8¯ù±òµ1
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8¿øº¼¶1
 M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8 íäöµ1
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Àøº¼¶1

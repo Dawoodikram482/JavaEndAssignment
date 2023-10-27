@@ -15,8 +15,8 @@ public class DashboardController {
   private Label roleLabel;
   @FXML
   private Label dateTimeLabel;
-  public User user;
-  public Database database;
+  private User user;
+  private Database database;
   public void setDatabase(Database database){
     this.database = database;
   }
