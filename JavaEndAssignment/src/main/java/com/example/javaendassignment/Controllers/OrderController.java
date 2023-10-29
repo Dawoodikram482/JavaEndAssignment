@@ -83,6 +83,9 @@ public class OrderController {
     String lastName = txtLastName.getText();
     String emailAddress = txtEmailAddress.getText();
     int phoneNumber = Integer.parseInt(txtPhoneNumber.getText());
+    if(!validateTextFields(firstName,lastName)){
+      return;
+    }
     try{
       User customer = new User(firstName,lastName,emailAddress,phoneNumber);
       LocalDateTime now = LocalDateTime.now();
@@ -126,4 +129,17 @@ public class OrderController {
     }catch (Exception e){
       messageLabel.setText("Clearing TextFields Failed");
     }
-  }}
+  }
+  private boolean validateTextFields(String firstName, String lastName) {
+    if (database.isOnlyLetters(firstName) || database.isOnlyLetters(lastName)) {
+      messageLabel.setText("First name and last name should contain only characters.");
+      return false;
+    }
+    if (!database.isPositiveNumber(txtPhoneNumber.getText())) {
+      messageLabel.setText("Please enter a positive phone number.");
+      return false;
+    }
+    return true;
+  }
+
+}

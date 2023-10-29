@@ -59,9 +59,9 @@ public class ProductInventoryController {
       double productPrice = Double.parseDouble(priceTextField.getText());
       String productDescription = descriptionTextField.getText();
 
-      Product product =new Product(stock,productName,productCategory,productPrice,productDescription);
-      database.addProductsToDatabase(product);
-      products.add(product);
+      Product newproduct =new Product(stock,productName,productCategory,productPrice,productDescription);
+      database.addProductsToDatabase(newproduct);
+      products.add(newproduct);
       clearTextFields();
       MessageLabel.setText("Product Successfully added!");
     }catch (Exception e){
@@ -148,17 +148,13 @@ public class ProductInventoryController {
       Product updatedProduct = new Product(updatedStock,updatedName,updatedCategory,updatedPrice,updatedDescription);
       database.deleteProductsFromDatabase(product);
       database.addProductsToDatabase(updatedProduct);
-
       int selectionIndex = products.indexOf(product);
       products.set(selectionIndex,updatedProduct);
-
       clearTextFields();
       product = null;
       MessageLabel.setText("Product Successfully Edited");
     }catch (Exception ex){
       MessageLabel.setText("Failed to Edit Product Details");
     }
-
   }
-
 }

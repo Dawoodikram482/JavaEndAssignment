@@ -29,6 +29,26 @@ public class Database {
     }
     return null;
   }
+  public boolean isOnlyLetters(String input) {
+    for (char c : input.toCharArray()) {
+      if (!Character.isLetter(c) && !Character.isSpaceChar(c)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  public boolean isPositiveNumber(String input) {
+    if (input == null || input.isEmpty() || input.charAt(0) == '0') {
+      return false;
+    }
+
+    for (char c : input.toCharArray()) {
+      if (!Character.isDigit(c)) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   public User loginWithCredentials(String username, String password){
     for (User user: users){

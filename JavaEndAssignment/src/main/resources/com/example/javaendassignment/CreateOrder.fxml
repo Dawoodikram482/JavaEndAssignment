@@ -72,5 +72,5 @@
          <Font name="Calibri Bold" size="26.0" />
       </font>
    </Label>
-   <Label fx:id="messageLabel" layoutX="540.0" layoutY="603.0" prefHeight="17.0" prefWidth="233.0" textFill="RED" />
+   <Label fx:id="messageLabel" layoutX="458.0" layoutY="603.0" prefHeight="49.0" prefWidth="313.0" textFill="RED" wrapText="true" />
 </AnchorPane>

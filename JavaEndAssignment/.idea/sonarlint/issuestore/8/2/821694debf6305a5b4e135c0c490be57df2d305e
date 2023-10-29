@@ -1,5 +1,5 @@
 
-m
-java:S1104"PMake user a static final constant or non-public and provide accessors if needed.(‹³¤²8¤Š¡çµ1
-v
-java:S1104"TMake database a static final constant or non-public and provide accessors if needed.(ÂÆš­þÿÿÿÿ8¤Š¡çµ1
+y
+java:S1450"WRemove the "database" field and declare it as a local variable in the relevant methods.(áæß”üÿÿÿÿ8Ù§Õ”·1
+N
+java:S1068",Remove this unused "database" private field.(áæß”üÿÿÿÿ8ß§Õ”·1

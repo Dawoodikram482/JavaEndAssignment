@@ -1,13 +1,5 @@
 
 r
-java:S1450"URemove the "orders" field and declare it as a local variable in the relevant methods.(®½Â´8ùÍÛÇ¶1
+java:S1450"URemove the "orders" field and declare it as a local variable in the relevant methods.(®½Â´8ùÍÛÇ¶1
 y
-java:S1450"WRemove the "products" field and declare it as a local variable in the relevant methods.(Œä£‰ıÿÿÿÿ8úÍÛÇ¶1
-W
-java:S1128"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ıÿÿÿÿ8ÄõÎ×¶1
-T
-java:S1128"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ8ô’áÇ¶1
-H
-java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8ô’áÇ¶1
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ô’áÇ¶1
+java:S1450"WRemove the "products" field and declare it as a local variable in the relevant methods.(Œä£‰ıÿÿÿÿ8úÍÛÇ¶1

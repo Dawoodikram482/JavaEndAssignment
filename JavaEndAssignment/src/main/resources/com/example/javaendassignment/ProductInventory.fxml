@@ -60,5 +60,5 @@
    <TextField fx:id="categoryTextField" layoutX="351.0" layoutY="555.0" promptText="Category" />
    <TextField fx:id="priceTextField" layoutX="523.0" layoutY="555.0" promptText="Price" />
    <TextField fx:id="descriptionTextField" layoutX="697.0" layoutY="555.0" promptText="Description" />
-   <Label fx:id="MessageLabel" layoutX="17.0" layoutY="612.0" prefHeight="17.0" prefWidth="292.0" />
+   <Label fx:id="MessageLabel" layoutX="16.0" layoutY="603.0" prefHeight="47.0" prefWidth="369.0" wrapText="true" />
 </AnchorPane>
