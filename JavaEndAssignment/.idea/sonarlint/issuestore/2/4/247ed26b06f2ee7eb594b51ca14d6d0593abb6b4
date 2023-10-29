@@ -1,7 +1,5 @@
 
-s	java:S116"WRename this field "MessageLabel" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èéæ…8øıå”·1
-}	java:S116"aRename this field "TableProductsInventory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠµÑ8Íİ¤”¶1
-X
-java:S1117>";Rename "product" which hides the field declared at line 33.(ÒÙÆ½8Ôİ¤”¶1
+s	java:S116"WRename this field "MessageLabel" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èéæ…8Õ˜ã·1
+}	java:S116"aRename this field "TableProductsInventory" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠµÑ8Õ˜ã·1
 ]
-java:S1117V";Rename "product" which hides the field declared at line 33.(áìÍüÿÿÿÿ8Öİ¤”¶1
+java:S1117V";Rename "product" which hides the field declared at line 33.(áìÍüÿÿÿÿ8ŸÕ˜ã·1

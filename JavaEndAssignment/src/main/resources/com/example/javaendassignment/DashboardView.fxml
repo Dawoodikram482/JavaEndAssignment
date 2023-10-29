@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="662.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaendassignment.Controllers.DashboardController">
     <children>
-        <Label fx:id="welcomeLabel" layoutX="118.0" layoutY="39.0" prefHeight="57.0" prefWidth="224.0" wrapText="true">
+        <Label fx:id="welcomeLabel" layoutX="118.0" layoutY="39.0" prefHeight="57.0" prefWidth="415.0" wrapText="true">
             <font>
                 <Font name="Calibri Bold Italic" size="26.0" />
             </font>
