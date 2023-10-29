@@ -66,6 +66,7 @@ public class AddProductDialogController {
       }
       if(quantity<= selection.getStock()){
         Product orderedProduct = new Product(quantity,selection.getName(),selection.getCategory(), selection.getPrice());
+        database.decreaseStock(selection.getName(),quantity);
         orderController.getOrderedProduct(orderedProduct);
         warningLabel.setText("");
         quantityTextField.clear();

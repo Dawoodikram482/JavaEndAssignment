@@ -72,6 +72,7 @@ public class OrderController {
       Product selectedProduct = TableOrderProducts.getSelectionModel().getSelectedItem();
       if (selectedProduct != null) {
         orderedProductsList.remove(selectedProduct);
+        database.increaseStock(selectedProduct.getName(),selectedProduct.getQuantity());
       }
     } catch (Exception e){
       messageLabel.setText("Error Occurred While Deleting the Product");
@@ -82,16 +83,20 @@ public class OrderController {
     String firstName = txtFirstName.getText();
     String lastName = txtLastName.getText();
     String emailAddress = txtEmailAddress.getText();
-    int phoneNumber = Integer.parseInt(txtPhoneNumber.getText());
+    String phoneNumber = txtPhoneNumber.getText();
+    if (firstName.isEmpty() || lastName.isEmpty() || phoneNumber.isEmpty() || emailAddress.isEmpty()) {
+      messageLabel.setText("Please fill in all the fields.");
+      return;
+    }
     if(!validateTextFields(firstName,lastName)){
       return;
     }
     try{
-      User customer = new User(firstName,lastName,emailAddress,phoneNumber);
+      int telephoneNumber = Integer.parseInt(phoneNumber);
+      User customer = new User(firstName,lastName,emailAddress,telephoneNumber);
       LocalDateTime now = LocalDateTime.now();
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
       String dateTime = now.format(formatter);
-      reduceStock();
 
       Order order = new Order(dateTime,customer,new ArrayList<>(orderedProductsList));
       database.addOrderToDatabase(order);
@@ -100,24 +105,6 @@ public class OrderController {
       TableOrderProducts.setItems(FXCollections.observableArrayList());
     }catch (Exception ex){
       messageLabel.setText("Error Occurred While Creating Order");
-    }
-  }
-  private Product getProductByName (String name){
-    for(Product searchProduct:database.obtainProducts()){
-      if(searchProduct.getName().equals(name)){
-        return searchProduct;
-      }
-    } return null;
-  }
-  private void reduceStock(){
-    for (Product product:orderedProductsList){
-      Product targetProduct = getProductByName(product.getName());
-      if(targetProduct!=null){
-        targetProduct.decreaseStock(product.getQuantity());
-      }
-      else{
-        messageLabel.setText("Product" + product.getName()+ "not found");
-      }
     }
   }
   public void clearTextFields(){
@@ -135,10 +122,10 @@ public class OrderController {
       messageLabel.setText("First name and last name should contain only characters.");
       return false;
     }
-    if (!database.isPositiveNumber(txtPhoneNumber.getText())) {
-      messageLabel.setText("Please enter a positive phone number.");
-      return false;
-    }
+//    if (!database.isPositiveNumber(txtPhoneNumber.getText())) {
+//      messageLabel.setText("Please enter a positive phone number.");
+//      return false;
+//    }
     return true;
   }
 

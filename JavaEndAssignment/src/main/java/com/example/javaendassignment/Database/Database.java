@@ -21,6 +21,15 @@ public class Database {
 
     loadDataFromDataFile();
   }
+  public void startingData(){
+    products.add((new Product(10, "The Big Bazoonga", "Guitar", 1599.99, "The Big Bazoonga Guitar version one")));
+    products.add((new Product(10, "The Yaba Daba Doo", "Guitar", 1399.99, "Drop the goo and yaba daba doo")));
+
+    List<Product> orderList = new ArrayList<>();
+    User customer = new User("Parranasian", "Parrapeero","Parranasianp@gmail.com",85280345);
+    orderList.add(new Product(3,"The Big Bazoonga", "Guitar",1599.99));
+    Order order = new Order("12:30:00 30-10-2023",customer, (ArrayList<Product>) orderList);
+  }
   public Role getUserRole(String username){
     for (User user: users){
       if(user.getUserName().equals(username)){
@@ -61,7 +70,9 @@ public class Database {
   public void loadDataFromDataFile(){
     File file = new File("DataFile.dat");
     if(!file.exists()){
+      startingData();
       sendDataToFile();
+      return;
     }
     try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file));){
 
@@ -100,6 +111,25 @@ public class Database {
     products.remove(product);
     sendDataToFile();
   }
+  public Product getProductByName(String name){
+    for(Product product:products){
+      if(product.getName()==name){
+        return product;
+      }
+    }
+    return null;
+  }
+  public void increaseStock(String name, int quantity){
+    Product product = getProductByName(name);
+    int stock = product.getStock();
+    product.setStock(stock+quantity);
+  }
+  public void decreaseStock(String name, int quantity){
+    Product product = getProductByName(name);
+    int stock = product.getStock();
+    product.setStock(stock-quantity);
+  }
+
   public List<Order> getOrders(){return orders;}
   public void addOrderToDatabase(Order order){
     orders.add(order);
