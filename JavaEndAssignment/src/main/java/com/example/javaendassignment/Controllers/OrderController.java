@@ -88,6 +88,10 @@ public class OrderController {
       messageLabel.setText("Please fill in all the fields.");
       return;
     }
+    if(TableOrderProducts.getItems().isEmpty()){
+      messageLabel.setText("Please click on 'Add Products' button and add at least one product to create order");
+      return;
+    }
     if(!validateTextFields(firstName,lastName)){
       return;
     }
