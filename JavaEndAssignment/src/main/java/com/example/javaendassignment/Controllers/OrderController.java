@@ -51,8 +51,10 @@ public class OrderController {
       Parent root = addOrderDialogLoader.load();
 
       AddProductDialogController dialogController = addOrderDialogLoader.getController();
-      dialogController.setDatabase(database);
+
+      dialogController.initialize(database);
       dialogController.setOrderController(this);
+
 
       Dialog<ButtonType> dialog = new Dialog<>();
       dialog.setTitle("Add Product To Order");

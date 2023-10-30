@@ -6,8 +6,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 public class ProductInventoryController {
+  @FXML
+  private AnchorPane productInventory;
   private ObservableList<Product> products;
   @FXML
   private Label MessageLabel;
@@ -155,6 +164,24 @@ public class ProductInventoryController {
       MessageLabel.setText("Product Successfully Edited");
     }catch (Exception ex){
       MessageLabel.setText("Failed to Edit Product Details");
+    }
+  }
+
+  public void onImportBtnClicked() throws IOException {
+    try{
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+    File selectedFile = fileChooser.showOpenDialog((Stage) productInventory.getScene().getWindow() );
+
+    if (selectedFile != null) {
+      String csvFilePath = selectedFile.getAbsolutePath();
+      List<Product> importedProducts =  database.readProducts(csvFilePath);
+      products.addAll(importedProducts);
+      MessageLabel.setText("Products added successfully");
+    }
+  }catch (IOException ex){
+      MessageLabel.setText("Error loading data from csv file");
+      ex.printStackTrace();
     }
   }
 }

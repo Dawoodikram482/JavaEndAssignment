@@ -1,6 +1,8 @@
 package com.example.javaendassignment.Database;
+
 import com.example.javaendassignment.Models.*;
 import com.example.javaendassignment.Models.Exceptions.ResultNotFoundException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,28 +18,31 @@ public class Database {
     orders = new ArrayList<>();
     users = new ArrayList<>();
 
-    users.add(new User("Dawood",  "Ikram&123", Role.Sales));
-    users.add(new User("Parranasian",  "Parrapeero&123", Role.Manager));
+    users.add(new User("Dawood", "Ikram&123", Role.Sales));
+    users.add(new User("Parranasian", "Parrapeero&123", Role.Manager));
 
     loadDataFromDataFile();
   }
-  public void startingData(){
+
+  public void startingData() {
     products.add((new Product(10, "The Big Bazoonga", "Guitar", 1599.99, "The Big Bazoonga Guitar version one")));
     products.add((new Product(10, "The Yaba Daba Doo", "Guitar", 1399.99, "Drop the goo and yaba daba doo")));
 
     List<Product> orderList = new ArrayList<>();
-    User customer = new User("Parranasian", "Parrapeero","Parranasianp@gmail.com",85280345);
-    orderList.add(new Product(3,"The Big Bazoonga", "Guitar",1599.99));
-    orders.add(new Order("12:30:00 30-10-2023",customer, (ArrayList<Product>) orderList));
+    User customer = new User("Parranasian", "Parrapeero", "Parranasianp@gmail.com", 85280345);
+    orderList.add(new Product(3, "The Big Bazoonga", "Guitar", 1599.99));
+    orders.add(new Order("12:30:00 30-10-2023", customer, (ArrayList<Product>) orderList));
   }
-  public Role getUserRole(String username){
-    for (User user: users){
-      if(user.getUserName().equals(username)){
-       return user.getRole();
+
+  public Role getUserRole(String username) {
+    for (User user : users) {
+      if (user.getUserName().equals(username)) {
+        return user.getRole();
       }
     }
     return null;
   }
+
   public boolean isOnlyLetters(String input) {
     for (char c : input.toCharArray()) {
       if (!Character.isLetter(c) && !Character.isSpaceChar(c)) {
@@ -46,6 +51,7 @@ public class Database {
     }
     return false;
   }
+
   public boolean isPositiveNumber(String input) {
     if (input == null || input.isEmpty() || input.charAt(0) == '0') {
       return false;
@@ -59,22 +65,23 @@ public class Database {
     return true;
   }
 
-  public User loginWithCredentials(String username, String password){
-    for (User user: users){
-      if (user.getUserName().equals(username)&& user.getPassword().equals(password)){
+  public User loginWithCredentials(String username, String password) {
+    for (User user : users) {
+      if (user.getUserName().equals(username) && user.getPassword().equals(password)) {
         return user;
       }
     }
     throw new ResultNotFoundException("Invalid Username and Password combination");
   }
-  public void loadDataFromDataFile(){
+
+  public void loadDataFromDataFile() {
     File file = new File("DataFile.dat");
-    if(!file.exists()){
+    if (!file.exists()) {
       startingData();
       sendDataToFile();
       return;
     }
-    try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file));){
+    try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file));) {
 
       dataSender = (SerializedDataSender) inputStream.readObject();
       users.clear();
@@ -90,49 +97,83 @@ public class Database {
       throw new RuntimeException(e);
     }
   }
+
   public void sendDataToFile() {
     dataSender = new SerializedDataSender(users, products, orders);
     File file = new File("DataFile.dat");
-    try(ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(file));) {
+    try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(file));) {
       outputStream.writeObject(dataSender);
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
   }
 
-  public List<Product> obtainProducts(){
+  public List<Product> obtainProducts() {
     return products;
   }
-  public void addProductsToDatabase(Product product){
+
+  public void addProductsToDatabase(Product product) {
     products.add(product);
     sendDataToFile();
   }
-  public void deleteProductsFromDatabase(Product product){
+
+  public void deleteProductsFromDatabase(Product product) {
     products.remove(product);
     sendDataToFile();
   }
-  public Product getProductByName(String name){
-    for(Product product:products){
-      if(product.getName()==name){
+
+  public Product getProductByName(String name) {
+    for (Product product : products) {
+      if (product.getName() == name) {
         return product;
       }
     }
     return null;
   }
-  public void increaseStock(String name, int quantity){
+
+  public void increaseStock(String name, int quantity) {
     Product product = getProductByName(name);
     int stock = product.getStock();
-    product.setStock(stock+quantity);
-  }
-  public void decreaseStock(String name, int quantity){
-    Product product = getProductByName(name);
-    int stock = product.getStock();
-    product.setStock(stock-quantity);
+    product.setStock(stock + quantity);
   }
 
-  public List<Order> getOrders(){return orders;}
-  public void addOrderToDatabase(Order order){
+  public void decreaseStock(String name, int quantity) {
+    Product product = getProductByName(name);
+    int stock = product.getStock();
+    product.setStock(stock - quantity);
+  }
+
+  public List<Order> getOrders() {
+    return orders;
+  }
+
+  public void addOrderToDatabase(Order order) {
     orders.add(order);
     sendDataToFile();
+  }
+
+  public List<Product> readProducts(String fileName) throws IOException {
+    List<Product> importedProducts = new ArrayList<>();
+    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+      String row;
+      reader.readLine();
+      while ((row = reader.readLine()) != null) {
+        String[] dataValue = row.split(";");
+        if (dataValue.length == 5) {
+          int stock = Integer.parseInt(dataValue[4]);
+          String name = dataValue[0];
+          String category = dataValue[1];
+          double price = Double.parseDouble(dataValue[2]);
+          String description = dataValue[3];
+          Product product = new Product(stock,name,category,price,description);
+          addProductsToDatabase(product);
+          importedProducts.add(product);
+
+        }
+      }
+    } catch (IOException ex) {
+      throw new IOException();
+    }
+    return importedProducts;
   }
 }

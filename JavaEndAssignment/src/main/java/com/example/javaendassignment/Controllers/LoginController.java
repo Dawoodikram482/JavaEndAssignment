@@ -1,6 +1,7 @@
 package com.example.javaendassignment.Controllers;
 
 import com.example.javaendassignment.Database.Database;
+import com.example.javaendassignment.Models.Exceptions.AccountLockedException;
 import com.example.javaendassignment.Models.Exceptions.ResultNotFoundException;
 import com.example.javaendassignment.Models.Role;
 import com.example.javaendassignment.Models.User;
@@ -9,12 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class LoginController {
@@ -29,6 +26,9 @@ public class LoginController {
     @FXML
     private Button btnLogin;
     private User user;
+    private static  final int MAX_LOGIN_ATTEMPTS = 3;
+    private int loginAttempts = 0;
+
     public void start(Database database){
         this.database = database;
         btnLogin.setDisable(true);
@@ -60,13 +60,39 @@ public class LoginController {
         String password = pswdFieldPassword.getText();
 
        try {
-           user = database.loginWithCredentials(username, password);
-           Role userRole = database.getUserRole(username);
-           openMainWindow(username,userRole);
-
+           if(loginAttempts<=MAX_LOGIN_ATTEMPTS) {
+               user = database.loginWithCredentials(username, password);
+               Role userRole = database.getUserRole(username);
+               openMainWindow(username, userRole);
+               loginAttempts = 0;
+           } else{
+               throw new AccountLockedException("Account has been locked. Too many unsuccessful login attempts");
+           }
        }catch (ResultNotFoundException ex){
            lblErrorMessage.setText(ex.getMessage());
+
+           loginAttempts++;
+
+           if (loginAttempts >= MAX_LOGIN_ATTEMPTS) {
+               showAccountLockAlertAndExit();
+           }
+       } catch (AccountLockedException e) {
+         throw new RuntimeException(e);
        }
+    }
+    private void showAccountLockAlertAndExit() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Account Locked");
+        alert.setHeaderText("Account Locked");
+        alert.setContentText("Your account has been locked");
+
+        ButtonType okButton = new ButtonType("OK");
+        alert.getButtonTypes().setAll(okButton);
+
+        alert.showAndWait().ifPresent(response -> {
+                    if (response == okButton) {
+                        System.exit(0);
+                    }});
     }
     private void openMainWindow(String  username, Role userRole) throws IOException {
         try {

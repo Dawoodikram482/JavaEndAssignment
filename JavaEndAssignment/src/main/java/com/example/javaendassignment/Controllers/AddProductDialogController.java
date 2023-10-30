@@ -4,11 +4,14 @@ import com.example.javaendassignment.Database.Database;
 import com.example.javaendassignment.Models.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class AddProductDialogController {
+  @FXML
+  private TextField seachTextBox;
   @FXML
   private Button cancelOrderBtn;
   @FXML
@@ -20,32 +23,31 @@ public class AddProductDialogController {
   private ObservableList <Product> products;
   private Database database;
   private OrderController orderController;
+  private FilteredList<Product> filteredProducts;
   public void setOrderController (OrderController orderController){this.orderController = orderController;}
-  public void setDatabase(Database database){
-    this.database = database;
-    try{
-      loadProducts();
-    }catch (Exception e){
-      warningLabel.setText("Database Setup Failed");
-      e.printStackTrace();
-    }
-  }
-  public void initialize(){
+  public void initialize(Database database){
     try {
+      this.database = database;
       TableProductsInventory.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-    }catch (Exception ex){
-      warningLabel.setText("Initialization Failed");
-    }
-  }
-  public void loadProducts(){
-    try {
       products = FXCollections.observableArrayList(database.obtainProducts());
       TableProductsInventory.setItems(products);
+
+      filteredProducts = new FilteredList<>(products,product -> true);
+      TableProductsInventory.setItems(filteredProducts);
+
+      seachTextBox.textProperty().addListener((observable, oldValue, newValue) -> {
+        if (newValue.length() >= 3) {
+          filterProducts(newValue);
+        } else {
+          filteredProducts.setPredicate(p -> true);
+        }
+      });
     }catch (Exception ex){
-      warningLabel.setText("Error Occurred While Loading Products");
+      warningLabel.setText("Initialization Failed");
       ex.printStackTrace();
     }
   }
+
 
   public void onCancelButtonClicked(){
     try{
@@ -78,5 +80,15 @@ public class AddProductDialogController {
       warningLabel.setText("Error Occured While Adding Product");
       ex.printStackTrace();
     }
+  }
+  private void filterProducts(String searchInput) {
+    filteredProducts.setPredicate(product -> {
+      if (searchInput == null || searchInput.isEmpty()) {
+        return true;
+      }
+      String lowerCaseSearchInput = searchInput.toLowerCase();
+
+      return product.getName().toLowerCase().contains(lowerCaseSearchInput);
+    });
   }
 }

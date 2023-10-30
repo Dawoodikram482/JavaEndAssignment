@@ -35,17 +35,17 @@
             </TableColumn>
         </columns>
     </TableView>
-    <Button fx:id="btnAddProduct" layoutX="227.0" layoutY="497.0" mnemonicParsing="false" onAction="#onAddProductButtonClicked" prefHeight="26.0" prefWidth="111.0" text="Add Product">
+    <Button fx:id="btnAddProduct" layoutX="16.0" layoutY="498.0" mnemonicParsing="false" onAction="#onAddProductButtonClicked" prefHeight="26.0" prefWidth="111.0" text="Add Product">
         <font>
             <Font name="Calibri" size="13.0" />
         </font>
     </Button>
-    <Button fx:id="btnDeleteProduct" layoutX="377.0" layoutY="497.0" mnemonicParsing="false" onAction="#onDeleteButtonClicked" prefHeight="25.0" prefWidth="111.0" text="Delete Product">
+    <Button fx:id="btnDeleteProduct" layoutX="166.0" layoutY="498.0" mnemonicParsing="false" onAction="#onDeleteButtonClicked" prefHeight="25.0" prefWidth="111.0" text="Delete Product">
         <font>
             <Font name="Calibri" size="13.0" />
         </font>
     </Button>
-    <Button fx:id="btnEditProduct" layoutX="523.0" layoutY="497.0" mnemonicParsing="false" onAction="#onEditButtonClicked" prefHeight="25.0" prefWidth="111.0" text="Edit Product">
+    <Button fx:id="btnEditProduct" layoutX="312.0" layoutY="498.0" mnemonicParsing="false" onAction="#onEditButtonClicked" prefHeight="25.0" prefWidth="111.0" text="Edit Product">
         <font>
             <Font name="Calibri" size="13.0" />
         </font>
@@ -61,4 +61,9 @@
    <TextField fx:id="priceTextField" layoutX="523.0" layoutY="555.0" promptText="Price" />
    <TextField fx:id="descriptionTextField" layoutX="697.0" layoutY="555.0" promptText="Description" />
    <Label fx:id="MessageLabel" layoutX="16.0" layoutY="603.0" prefHeight="47.0" prefWidth="369.0" wrapText="true" />
+   <Button fx:id="importProductsBtn" layoutX="687.0" layoutY="499.0" mnemonicParsing="false" onAction="#onImportBtnClicked" prefHeight="26.0" prefWidth="149.0" text="Import Products">
+      <font>
+         <Font name="Calibri" size="13.0" />
+      </font>
+   </Button>
 </AnchorPane>
