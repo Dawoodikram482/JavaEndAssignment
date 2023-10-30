@@ -1,6 +1,10 @@
 
-g	java:S112M"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ç†ØŸ¶1
-g	java:S112O"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ç†ØŸ¶1
-g	java:S112X"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ç†ØŸ¶1
+g	java:S112X"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Íêèî·1
+g	java:S112Z"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Íêèî·1
+g	java:S112c"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Îêèî·1
+i
+java:S1192"GDefine a constant instead of duplicating this literal "Guitar" 3 times.(å¡ğ×ùÿÿÿÿ8Ïêèî·1
+^
+java:S4973t"<Strings and Boxed types should be compared using "equals()".(ûÂÚ©ùÿÿÿÿ8Ñêèî·1
 a
-java:S2147N"DCombine this catch with the one at line 76, which has the same body.(ıàÑÎ8ø†ØŸ¶1
+java:S2147Y"DCombine this catch with the one at line 87, which has the same body.(ıàÑÎ8€ëèî·1
